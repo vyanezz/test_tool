@@ -20,7 +20,7 @@ class TrafficMonitor:
 
     def _start_mitmproxy(self):
         """Executed in thread"""
-        mitmdump(["-p", str(self.port), "-s", "interceptor.py"] + self.traffic_urls)
+        mitmdump(["-p", str(self.port), "-s", "interceptors/interceptor.py"] + self.traffic_urls)
 
     def stop(self):
         if self.thread:

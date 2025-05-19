@@ -10,6 +10,10 @@ class WebDriver:
         if proxy:
             options.add_argument(f"--proxy-server={proxy}")
 
+        else:
+            options.add_argument(f"--proxy-server=http://localhost:8080")
+
+        options.add_argument('--ignore-certificate-errors')
         self.driver = webdriver.Chrome(options=options)
 
     def navigate(self, url):

@@ -4,12 +4,13 @@ class Interceptor:
     def __init__(self):
         self.filter_urls = []
 
-    def configure(self):
+    def configure(self, updated):
         filter_option = ctx.options.filter_urls
         if filter_option:
             self.filter_urls = [url.strip() for url in filter_option.split(",") if url.strip()]
         else:
             self.filter_urls = []
+
 
 
     def _url_matches(self, url):

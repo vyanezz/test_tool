@@ -1,5 +1,4 @@
-import time
-from modules.mitmdump import EmbeddedMitmProxy
+from modules.embedded_mitmproxy import EmbeddedMitmProxy
 from modules.webdriver import WebDriver
 
 

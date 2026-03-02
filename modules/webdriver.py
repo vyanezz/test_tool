@@ -8,7 +8,7 @@ class WebDriver:
         options = webdriver.ChromeOptions()
 
         if proxy:
-            options.add_argument(f"--proxy-server={proxy}")
+            options.add_argument(f"--proxy-server=http://localhost:{proxy}")
 
         else:
             options.add_argument(f"--proxy-server=http://localhost:8080")
@@ -25,11 +25,11 @@ class WebDriver:
                 EC.visibility_of_element_located((by, value))
             )
         except Exception as e:
-            print(f"Error esperando el elemento: {e}")
+            print(f"Error waiting for element: {e}")
             return None
 
     def find_element(self, by, value):
-        print(by, value)  # Esto te ayudará a verificar los valores
+        print(by, value)
         return self.driver.find_element(by, value)
 
     def click(self, by, value):

@@ -3,12 +3,10 @@ import threading
 from mitmproxy import options
 from mitmproxy.tools.dump import DumpMaster
 from interceptors.interceptor import Interceptor
-import time
-from utils import logger
 
 class EmbeddedMitmProxy:
-    def __init__(self, port=8080):
-        self.port = port
+    def __init__(self, port):
+        self.port = None
         self.mitm = None
         self.interceptor = None
         self.thread = None
@@ -38,19 +36,3 @@ class EmbeddedMitmProxy:
             self.mitm.shutdown()
         if self.thread:
             self.thread.join()
-
-    def validate_api_call(self, endpoint, method=None, timeout=5):
-        if not self.interceptor:
-            return False
-
-        start = time.time()
-
-        while time.time() - start < timeout:
-            for flow in self.interceptor.flows:
-                if endpoint in flow.request.url:
-                    if method is None or flow.request.method.upper() == method.upper():
-                        logger.log_api_call(endpoint,method)
-                        return True
-            time.sleep(0.1)
-
-        return False

@@ -1,4 +1,4 @@
-# 🚀 TestAutomation Framework
+# 🚀 TestFlow
 
 A lightweight test automation framework that combines **Selenium-based UI testing** with **network traffic validation** using an embedded proxy.
 
